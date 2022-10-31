@@ -1,0 +1,84 @@
+// C++ implementation to check if a number is prime or not using Wilson Primality Test
+
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Function to calculate the factorial
+long long fact(const int& p)
+{
+    if (p <= 1)
+        return 1;
+    return p * fact(p - 1);
+}
+ 
+
+bool isPrime(const long long& p)
+{
+    if (p == 4)
+        return false;
+ 
+    //  (p - 1) ! ≡  (p-1) mod p
+    long long a = fact(p - 1) % p;
+    if (a == p - 1)
+        return true;
+    return false;
+}
+ 
+
+int main()
+{
+    if (isPrime(13) == true)
+        cout << "True" << endl;
+    else
+        cout << "false" << endl;
+ 
+    if (isPrime(15) == true)
+        cout << "True" << endl;
+    else
+        cout << "false" << endl;
+    return 0;
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ Another approach
+ 
+
+bool isPrime(int n)
+{
+    
+    if (n <= 1)
+        return false;
+    if (n <= 3)
+        return true;
+ 
+   
+    if (n % 2 == 0 || n % 3 == 0)
+        return false;
+ 
+    // Using concept of prime number
+    // can be represented in form of
+    // (6*n + 1) or(6*n - 1) hence
+    // we have to go for every multiple of 6 and
+    // prime number would always be 1 less or 1 more than
+    // the multiple of 6.
+    
+    
+    for (int i = 5; i * i <= n; i = i + 6)
+        if (n % i == 0 || n % (i + 2) == 0)
+            return false;
+ 
+    return true;
+}
+ 
+
+int main()
+{
+    isPrime(4191) ? cout << " true\n" : cout << " false\n";
+    isPrime(15) ? cout << " true\n" : cout << " false\n";
+    return 0;
+}
+
