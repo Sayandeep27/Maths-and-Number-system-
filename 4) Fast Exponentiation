@@ -1,5 +1,44 @@
 
  Find a^b=?-----------------------------
+ 
+ 
+ 
+ 
+ class Solution
+{
+	public:
+		long long int PowMod(long long int x,long long int n,long long int m)
+		{
+		    // Code here
+		    
+		    if(m==1)  return 0;
+		    
+		    long long int res=1;
+		    
+		    long long int base=x%m;
+		    
+		    while(n>0)
+		    {
+		        if(n%2==1)
+		        {
+		            res=(res*base)%m;
+		        }
+		        
+		        n=n/2;
+		        base=(base*base)%m;
+		    }
+		    
+		    
+		   return res;
+		}
+};
+ 
+ 
+ 
+ 
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+
 
 #include<iostream>
 using namespace std;
