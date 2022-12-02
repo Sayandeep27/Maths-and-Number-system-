@@ -15,7 +15,7 @@ long long fact(const int& p)
 
 bool isPrime(const long long& p)
 {
-    if (p == 4)
+    if (p == 4)    // no need to check
         return false;
  
     //  (p - 1) ! ≡  (p-1) mod p
