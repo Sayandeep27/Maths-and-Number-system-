@@ -1,53 +1,40 @@
 Time Complexity - O(n log log n)
 
-
 class Solution
 {
 public:
 
-  int n=1000000;
-  bool sieve[1000001];
-  
-  void create_sieve()
-  {
-      for(int i=0;i<=n;i++)
-      {
-          sieve[i]=true;
-      }
-      
-      
-      for(int i=2;i*i<=n;i++)
-      {
-          if(sieve[i]==true)
-          {
-              for(int j=i*i;j<=n;j=j+i)
-              {
-                  sieve[j]=false;
-              }
-          }
-      }
-  }
-
-    vector<int> sieveOfEratosthenes(int N)
+    int N=1000000;
+    bool sieve[1000001];
+    
+    void create_sieve()
     {
-        // Write Your Code here
+        for(int i=2;i<=N;i++) sieve[i]=true;
         
-        vector<int>ans;
-        
-        
-        create_sieve();
-        
-        
-        for(int i=2;i<=N;i++)
+        for(int i=2;i*i<=N;i++)
         {
             if(sieve[i]==true)
             {
-                ans.push_back(i);
+                for(int j=i*i;j<=N;j+=i)
+                {
+                    sieve[j]=false;
+                }
             }
         }
+    }
+
+    vector<int> sieveOfEratosthenes(int n)
+    {
+        create_sieve();
         
+        vector<int>ans;
         
+        for(int i=1;i<=n;i++)
+        {
+            if(sieve[i]==true) ans.push_back(i);
+        }
         
         return ans;
+        
     }
 };
